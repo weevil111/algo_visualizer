@@ -12,18 +12,24 @@
       <h2>Algorithm Visualizer</h2>
       <div class="array-inputs">
         <p>Size of the array:</p>
-        <input
-          id="a_size"
-          type="range"
-          min="20"
-          max="150"
-          step="1"
-          value="80"
-        />
+        <input id="a_size" type="range" min="10" max="50" step="1" value="25" />
         <p>Speed of the algorithm:</p>
         <input id="a_speed" type="range" min="1" max="5" step="1" value="4" />
         <button id="a_generate">Generate New Array!</button>
       </div>
     </header>
+    <main>
+      <div class="algos">
+        <h4>Algorithms</h4>
+        <button>Bubble</button>
+        <button>Selection</button>
+        <button>Insertion</button>
+        <button>Merge</button>
+        <button>Quick</button>
+        <button>Heap</button>
+      </div>
+      <div id="array_container"></div>
+    </main>
+    <script src="./js/main.js"></script>
   </body>
 </html>
