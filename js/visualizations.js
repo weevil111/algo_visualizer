@@ -6,7 +6,6 @@ var c_delay = 0 //This is updated ov every div change so that visualization is v
 var clearTimeoutArray = []
 
 inp_aspeed.addEventListener("input", changeSpeed);
-inp_reset.addEventListener("click", reset)
 
 function changeSpeed() {
     let array_speed = inp_aspeed.value;
@@ -47,22 +46,14 @@ function enable_buttons(now = false) {
             butts_algos[i].disabled = false;
         }
         inp_as.disabled = false;
-        inp_gen.disabled = false;
+        inp_gen.innerText = "Generate New Array";
         inp_aspeed.disabled = false;
+        isSorting = false;
     }
     if (now) {
         enableButtonFunction();
     } else {
-        setTimeout(enableButtonFunction, c_delay += delay_time);
+        const clearFn = setTimeout(enableButtonFunction, c_delay += delay_time);
+        clearTimeoutArray.push(clearFn)
     }
-}
-
-function reset() {
-    let blocks = document.querySelectorAll("#array_container>div")
-    for (let i = 0; i < blocks.length; i++) {
-        blocks[i].style.backgroundColor = "#e67e22";
-    }
-
-    enable_buttons(true);
-    clearTimeoutArray.forEach(el => clearTimeout(el)) // clear further updates
 }

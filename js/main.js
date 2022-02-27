@@ -13,8 +13,13 @@ inp_as.addEventListener("input", update_array_size)
 var div_sizes = []
 var divs = []
 var array_size = Number(inp_as.value)
+var isSorting = false
 
 function generate_array() {
+  if (isSorting) {
+    enable_buttons(true);
+    clearTimeoutArray.forEach(el => clearTimeout(el)) // clear further updates
+  }
   cont.innerHTML = "";
   for (var i = 0; i < array_size; i++) {
     div_sizes[i] = Math.floor(Math.random() * (100 - 10)) + 10;
@@ -46,6 +51,7 @@ for (let i = 0; i < butts_algos.length; i++) {
 
 function runalgo() {
   disable_buttons();
+  isSorting = true
 
   this.classList.add("algo_selected");
   switch (this.innerHTML) {
@@ -75,7 +81,7 @@ function disable_buttons() {
     butts_algos[i].classList = [];
     butts_algos[i].disabled = true;
     inp_as.disabled = true;
-    inp_gen.disabled = true;
+    inp_gen.innerText = "Reset";
     inp_aspeed.disabled = true;
   }
 }
