@@ -2,7 +2,7 @@ function Insertion() {
     c_delay = 0;
 
     for (var j = 0; j < array_size; j++) {
-        div_update(divs[j], div_sizes[j], "yellow");//Color update
+        div_update(divs[j], div_sizes[j], "#8e44ad");//Color update
 
         var key = div_sizes[j];
         var i = j - 1;
@@ -15,12 +15,12 @@ function Insertion() {
             div_update(divs[i], div_sizes[i], "red");//Height update
             div_update(divs[i + 1], div_sizes[i + 1], "red");//Height update
 
-            div_update(divs[i], div_sizes[i], "blue");//Color update
+            div_update(divs[i], div_sizes[i], "#e67e22");//Color update
             if (i == (j - 1)) {
-                div_update(divs[i + 1], div_sizes[i + 1], "yellow");//Color update
+                div_update(divs[i + 1], div_sizes[i + 1], "#8e44ad");//Color update
             }
             else {
-                div_update(divs[i + 1], div_sizes[i + 1], "blue");//Color update
+                div_update(divs[i + 1], div_sizes[i + 1], "#e67e22");//Color update
             }
             i -= 1;
         }

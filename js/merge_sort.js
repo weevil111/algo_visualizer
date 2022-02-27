@@ -39,7 +39,7 @@ function merge_sort(start, mid, end) {
 function merge_partition(start, end) {
     if (start < end) {
         var mid = Math.floor((start + end) / 2);
-        div_update(divs[mid], div_sizes[mid], "yellow");//Color update
+        div_update(divs[mid], div_sizes[mid], "#8e44ad");//Color update
 
         merge_partition(start, mid);
         merge_partition(mid + 1, end);

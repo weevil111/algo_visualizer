@@ -9,12 +9,12 @@ function Quick() {
 function quick_partition(start, end) {
     var i = start + 1;
     var piv = div_sizes[start];//make the first element as pivot element.
-    div_update(divs[start], div_sizes[start], "yellow");//Color update
+    div_update(divs[start], div_sizes[start], "#8e44ad");//Color update
 
     for (var j = start + 1; j <= end; j++) {
         //re-arrange the array by putting elements which are less than pivot on one side and which are greater that on other.
         if (div_sizes[j] < piv) {
-            div_update(divs[j], div_sizes[j], "yellow");//Color update
+            div_update(divs[j], div_sizes[j], "#8e44ad");//Color update
 
             div_update(divs[i], div_sizes[i], "red");//Color update
             div_update(divs[j], div_sizes[j], "red");//Color update
@@ -26,8 +26,8 @@ function quick_partition(start, end) {
             div_update(divs[i], div_sizes[i], "red");//Height update
             div_update(divs[j], div_sizes[j], "red");//Height update
 
-            div_update(divs[i], div_sizes[i], "blue");//Height update
-            div_update(divs[j], div_sizes[j], "blue");//Height update
+            div_update(divs[i], div_sizes[i], "#e67e22");//Height update
+            div_update(divs[j], div_sizes[j], "#e67e22");//Height update
 
             i += 1;
         }

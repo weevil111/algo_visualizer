@@ -34,6 +34,7 @@ function changeSpeed() {
 
 function div_update(cont, height, color) {
     const clearFunction = setTimeout(function () {
+        cont.innerText = height
         cont.style = " margin:0% " + margin_size + "%; width:" + (100 / array_size - (2 * margin_size)) + "%; height:" + height + "%; background-color:" + color + ";";
     }, c_delay += delay_time);
     clearTimeoutArray.push(clearFunction)
