@@ -18,9 +18,10 @@ header h2 {
 }
 
 main {
-  height: 85vh;
-  margin: 16px;
+  height: calc(85vh - 32px);
+  padding: 16px;
   text-align: center;
+  background-color: whitesmoke;
 }
 
 nav {
@@ -71,7 +72,8 @@ nav {
   cursor: pointer;
 }
 
-.btn-save:hover {
+.btn-save:hover,
+.btn-ques-nav:hover {
   background: #ffffff;
   border: 1px solid #2c3e50;
   color: #2c3e50;
@@ -111,4 +113,58 @@ nav {
   padding: 16px;
   text-align: left;
   cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-answer:hover {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+.quiz-actions {
+  position: absolute;
+  bottom: 8px;
+  left: 0px;
+  width: calc(100vw - 32px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 16px;
+}
+
+.quiz-progress-container {
+  flex-grow: 1;
+  display: flex;
+  height: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.quiz-progress {
+  width: 50%;
+  background-color: #e67e22;
+  border-radius: 10px;
+}
+
+.btn-ques-nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border: 1px solid whitesmoke;
+  background-color: #2c3e50;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 10px;
+  fill: white;
+}
+
+.btn-ques-nav:hover .arrow {
+  fill: #2c3e50;
 }
