@@ -4,42 +4,53 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <title>Algo Visualizer</title>
+    <link rel="stylesheet" href="./css/quiz.css" />
+    <title>Quiz - Algo Visualizer</title>
   </head>
   <body>
     <header>
       <h2>Algorithm Visualizer</h2>
-      <div class="array-inputs">
-        <p>Size of the array:</p>
-        <input id="a_size" type="range" min="10" max="50" step="1" value="25" />
-        <p>Speed of the algorithm:</p>
-        <input id="a_speed" type="range" min="1" max="5" step="1" value="4" />
-        <button id="a_generate">Generate New Array</button>
-        <button class="quiz" onclick="window.location.href = '/quiz'">
-          Take a Quiz
+      <nav>
+        <button
+          class="btn-outlined"
+          onclick="window.location.href = '/index.html'"
+        >
+          Home
         </button>
-      </div>
+      </nav>
     </header>
     <main>
-      <div class="algos">
-        <h4>Algorithms</h4>
-        <button>Bubble</button>
-        <button>Selection</button>
-        <button>Insertion</button>
-        <button>Merge</button>
-        <button>Quick</button>
-        <button>Heap</button>
+      <div class="quiz-info">
+        <div class="question-no">Question 2/10</div>
+        <div class="topic">Topic - Bubble sort</div>
+        <button class="btn-save">Save Progress</div>
       </div>
-      <div id="array_container"></div>
+      <div class="quiz-card">
+        <div class="quiz-title">
+          Samantha would like to create a place online that all members of her study group can access. They will use it to discuss questions, and share ideas, resources and knowledge. They can also return to it later to use as a study guide for the final exam. Which method would best accomplish Samantha’s goal?
+        </div>
+        <div class="quiz-subtitle">
+          Pick any one option
+        </div>
+        <div class="quiz-body">
+          <label class="quiz-answer" >
+            <input type="radio" name="answer" id="answer1">
+            Using e-mail
+            </label>
+            <label class="quiz-answer" >
+              <input type="radio" name="answer" id="answer2">
+              Making an answer key
+            </label>
+            <label class="quiz-answer" >
+              <input type="radio" name="answer" id="answer3">
+              Using a wiki
+            </label>
+            <label class="quiz-answer">
+              <input type="radio" name="answer" id="answer4">
+              Using a blog
+            </label>
+        </div>
+      </div>
     </main>
-    <script src="./js/main.js"></script>
-    <script src="./js/visualizations.js"></script>
-    <script src="./js/bubble_sort.js"></script>
-    <script src="./js/heap_sort.js"></script>
-    <script src="./js/insertion_sort.js"></script>
-    <script src="./js/merge_sort.js"></script>
-    <script src="./js/quick_sort.js"></script>
-    <script src="./js/selection_sort.js"></script>
   </body>
 </html>
