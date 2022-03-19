@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <title>Algo Visualizer</title>
-  </head>
-  <body>
-    <header>
-      <h2>Algorithm Visualizer</h2>
-      <div class="array-inputs">
-        <p>Size of the array:</p>
-        <input id="a_size" type="range" min="10" max="50" step="1" value="25" />
-        <p>Speed of the algorithm:</p>
-        <input id="a_speed" type="range" min="1" max="5" step="1" value="4" />
-        <button id="a_generate">Generate New Array</button>
-        <button class="quiz" onclick="window.location.href = '/quiz.html'">
-          Take a Quiz
-        </button>
-      </div>
-    </header>
-    <main>
-      <div class="algos">
-        <h4>Algorithms</h4>
-        <button>Bubble</button>
-        <button>Selection</button>
-        <button>Insertion</button>
-        <button>Merge</button>
-        <button>Quick</button>
-        <button>Heap</button>
-      </div>
-      <div id="array_container"></div>
-    </main>
-    <script src="./js/main.js"></script>
-    <script src="./js/visualizations.js"></script>
-    <script src="./js/bubble_sort.js"></script>
-    <script src="./js/heap_sort.js"></script>
-    <script src="./js/insertion_sort.js"></script>
-    <script src="./js/merge_sort.js"></script>
-    <script src="./js/quick_sort.js"></script>
-    <script src="./js/selection_sort.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <title>Algo Visualizer</title>
+</head>
+
+<body>
+  <header>
+    <h2>Algorithm Visualizer</h2>
+    <div class="array-inputs">
+      <p>Size of the array:</p>
+      <input id="a_size" type="range" min="10" max="50" step="1" value="25" />
+      <p>Speed of the algorithm:</p>
+      <input id="a_speed" type="range" min="1" max="5" step="1" value="4" />
+      <button id="a_generate">Generate New Array</button>
+      <button class="quiz" onclick="window.location.href = '/quiz.html'">
+        Take a Quiz
+      </button>
+    </div>
+  </header>
+  <main>
+    <div class="algos">
+      <h4>Algorithms</h4>
+      <button>Bubble</button>
+      <button>Selection</button>
+      <button>Insertion</button>
+      <button>Merge</button>
+      <button>Quick</button>
+      <button>Heap</button>
+    </div>
+    <div id="array_container"></div>
+  </main>
+  <script src="./js/main.js"></script>
+  <script src="./js/visualizations.js"></script>
+  <script src="./js/sorting_algos/bubble_sort.js"></script>
+  <script src="./js/sorting_algos/heap_sort.js"></script>
+  <script src="./js/sorting_algos/insertion_sort.js"></script>
+  <script src="./js/sorting_algos/merge_sort.js"></script>
+  <script src="./js/sorting_algos/quick_sort.js"></script>
+  <script src="./js/sorting_algos/selection_sort.js"></script>
+</body>
+
 </html>

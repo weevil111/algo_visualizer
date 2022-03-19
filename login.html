@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/auth.css" />
+  <title>Login - Algo Visualizer</title>
+</head>
+
+<body>
+  <header>
+    <h2>Algorithm Visualizer</h2>
+    <nav>
+      <button class="btn-outlined" onclick="window.location.href = '/index.html'">
+        Home
+      </button>
+    </nav>
+  </header>
+  <main>
+    <div class="card">
+      <div class="card-title">LOGIN</div>
+      <div class="card-subtitle">
+        Welcome back! Please login to continue
+      </div>
+      <form class="card-body">
+        <label>
+          Email*
+          <input type="text" name="email" id="input_email" autocomplete="off">
+        </label>
+        <label>
+          Password*
+          <input type="text" name="pass" id="input_pass">
+        </label>
+        <button type="submit" class="btn-submit">Login</button>
+      </form>
+    </div>
+    <div class="redirect-container">
+      Don't have an account?
+      <a href="./signup.html">Sign up</a>
+    </div>
+  </main>
+  <script src="./js/login.js"></script>
+</body>
+
+</html>
