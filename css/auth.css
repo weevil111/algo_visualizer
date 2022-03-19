@@ -18,7 +18,7 @@ header h2 {
 }
 
 main {
-  height: calc(85vh - 32px);
+  min-height: calc(85vh - 32px);
   padding: 16px;
   text-align: center;
 }
@@ -46,11 +46,8 @@ nav {
 }
 
 .card {
-  border: 1px solid #95a5a6;
-  border-radius: 8px;
   max-width: 360px;
   margin: 16px auto;
-  padding: 32px;
 }
 .card-title {
   font-size: 2.5rem;
@@ -63,9 +60,12 @@ nav {
 }
 .card-body {
   display: flex;
+  border: 1px solid #95a5a6;
+  border-radius: 8px;
   flex-direction: column;
   gap: 16px;
   margin: 16px 0px;
+  padding: 32px;
 }
 label {
   display: flex;
@@ -93,4 +93,5 @@ input:focus-visible {
 }
 .redirect-container {
   font-size: 1.1rem;
+  margin-bottom: 100px;
 }

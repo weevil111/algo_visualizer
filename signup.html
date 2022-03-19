@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./css/auth.css" />
-  <title>Login - Algo Visualizer</title>
+  <title>Signup - Algo Visualizer</title>
 </head>
 
 <body>
@@ -20,11 +20,15 @@
   </header>
   <main>
     <div class="card">
-      <div class="card-title">LOGIN</div>
+      <div class="card-title">Signup</div>
       <div class="card-subtitle">
-        Welcome back! Please login to continue
+        Signup to save progress
       </div>
       <form class="card-body">
+        <label>
+          Name*
+          <input type="text" name="name" id="input_name" autocomplete="off">
+        </label>
         <label>
           Email*
           <input type="text" name="email" id="input_email" autocomplete="off">
@@ -33,12 +37,12 @@
           Password*
           <input type="password" name="pass" id="input_pass">
         </label>
-        <button type="submit" class="btn-submit">Login</button>
+        <button type="submit" class="btn-submit">Signup</button>
       </form>
     </div>
     <div class="redirect-container">
-      Don't have an account?
-      <a href="./signup.html">Sign up</a>
+      Already have an account?
+      <a href="./login.html">Login</a>
     </div>
   </main>
   <script type="module" src="./js/firebase.js"></script>
