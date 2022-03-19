@@ -1,6 +1,21 @@
 const nameInput = document.querySelector("#input_name");
 const emailInput = document.querySelector("#input_email");
 const passInput = document.querySelector("#input_pass");
+const loginBtn = document.querySelector("#login");
+const logoutBtn = document.querySelector("#logout");
+const avatar = document.querySelector("#avatar");
+
+firebaseAuth.onAuthStateChanged(user => {
+  if (user) {
+    if (loginBtn) loginBtn.classList.add("hidden");
+    if (logoutBtn) logoutBtn.classList.remove("hidden")
+    if (avatar) avatar.classList.remove("hidden")
+  } else {
+    if (loginBtn) loginBtn.classList.remove("hidden");
+    if (logoutBtn) logoutBtn.classList.add("hidden")
+    if (avatar) avatar.classList.add("hidden")
+  }
+})
 
 function login(e) {
   e.preventDefault();
@@ -36,4 +51,8 @@ function signup(e) {
     })
 
   return false
+}
+
+function logout() {
+  firebaseAuth.signOut();
 }
