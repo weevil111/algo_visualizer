@@ -9,23 +9,35 @@ header {
   background-color: #2c3e50;
   color: white;
   text-align: center;
-  height: 15vh;
 }
 
-header h2 {
-  margin: 0;
-  padding: 8px;
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.avatar {
+  padding: 4px 8px;
+  background: white;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+  border-radius: 16px;
 }
 
 main {
   min-height: calc(85vh - 32px);
   padding: 16px;
   text-align: center;
-}
-
-nav {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 .btn-outlined,
