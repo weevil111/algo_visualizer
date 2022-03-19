@@ -10,6 +10,13 @@ firebaseAuth.onAuthStateChanged(user => {
     if (loginBtn) loginBtn.classList.add("hidden");
     if (logoutBtn) logoutBtn.classList.remove("hidden")
     if (avatar) avatar.classList.remove("hidden")
+    if (["/signup.html", "login.html"].includes(window.location.pathname)) {
+      window.location.href = "/index.html";
+    }
+    if (avatar) {
+      avatar.innerText = user.displayName ? user.displayName[0].toUpperCase() : user.email[0].toUpperCase()
+    }
+
   } else {
     if (loginBtn) loginBtn.classList.remove("hidden");
     if (logoutBtn) logoutBtn.classList.add("hidden")
@@ -21,7 +28,15 @@ function login(e) {
   e.preventDefault();
   const email = emailInput.value;
   const pass = passInput.value;
-  console.log(email, pass)
+
+  firebaseAuth.signInWithEmailAndPassword(email, pass)
+    .then(() => {
+      window.location.href = "/index.html"
+    })
+    .catch(error => {
+      console.log(error);
+      alert(`Login failed! ${error.code}`)
+    })
 }
 
 function signup(e) {
@@ -36,10 +51,8 @@ function signup(e) {
 
   firebaseAuth.createUserWithEmailAndPassword(email, password)
     .then(({ user }) => {
-      return firestore.doc(`profiles/${user.uid}`).set({
-        email: user.email,
-        name,
-        userId: user.uid
+      return user.updateProfile({
+        displayName: name
       })
     })
     .then(() => {

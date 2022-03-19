@@ -30,12 +30,14 @@ header {
   align-items: center;
   gap: 8px;
 }
+
 .avatar {
-  padding: 4px 8px;
+  padding: 4px 12px;
   background: white;
   color: #2c3e50;
   border: 1px solid #2c3e50;
   border-radius: 16px;
+  font-size: 1.2rem;
 }
 
 main {

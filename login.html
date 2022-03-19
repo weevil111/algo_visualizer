@@ -27,14 +27,14 @@
       <div class="card-subtitle">
         Welcome back! Please login to continue
       </div>
-      <form class="card-body">
+      <form class="card-body" onsubmit="login(event)">
         <label>
           Email*
-          <input type="text" name="email" id="input_email" autocomplete="off">
+          <input type="email" name="email" id="input_email" autocomplete="off" required>
         </label>
         <label>
           Password*
-          <input type="password" name="pass" id="input_pass">
+          <input type="password" name="pass" id="input_pass" required>
         </label>
         <button type="submit" class="btn-submit">Login</button>
       </form>
