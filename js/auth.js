@@ -10,7 +10,7 @@ firebaseAuth.onAuthStateChanged(user => {
     if (loginBtn) loginBtn.classList.add("hidden");
     if (logoutBtn) logoutBtn.classList.remove("hidden")
     if (avatar) avatar.classList.remove("hidden")
-    if (["/signup.html", "login.html"].includes(window.location.pathname)) {
+    if (["/signup.html", "/login.html"].includes(window.location.pathname)) {
       window.location.href = "/index.html";
     }
     if (avatar) {
