@@ -22,20 +22,20 @@
     <div class="card">
       <div class="card-title">Signup</div>
       <div class="card-subtitle">
-        Signup to save progress
+        Create an account to save progress
       </div>
-      <form class="card-body">
+      <form class="card-body" onsubmit="signup(event)">
         <label>
           Name*
-          <input type="text" name="name" id="input_name" autocomplete="off">
+          <input value="APM" type="text" name="name" id="input_name" autocomplete="off" required>
         </label>
         <label>
           Email*
-          <input type="text" name="email" id="input_email" autocomplete="off">
+          <input value="apm@apm.com" type="email" name="email" id="input_email" autocomplete="off" required>
         </label>
         <label>
           Password*
-          <input type="password" name="pass" id="input_pass">
+          <input value="Test@123" type="password" name="pass" id="input_pass" required>
         </label>
         <button type="submit" class="btn-submit">Signup</button>
       </form>
@@ -45,8 +45,11 @@
       <a href="./login.html">Login</a>
     </div>
   </main>
-  <script type="module" src="./js/firebase.js"></script>
-  <script type="module" src="./js/login.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="./js/firebase.js"></script>
+  <script src="./js/auth.js"></script>
 </body>
 
 </html>
