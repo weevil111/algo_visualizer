@@ -6,6 +6,12 @@ body {
   user-select: none;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .hidden {
   display: none;
 }
@@ -72,7 +78,7 @@ header {
 }
 
 main {
-  height: 85vh;
+  height: 100%;
   display: flex;
   margin: 0 8px;
 }
