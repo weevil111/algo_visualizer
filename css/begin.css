@@ -1,0 +1,120 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.hidden {
+  display: none;
+}
+
+header {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  padding: 4px 8px;
+  background: white;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+  border-radius: 16px;
+  font-size: 1.2rem;
+}
+
+main {
+  min-height: calc(85vh - 32px);
+  padding: 16px;
+  text-align: center;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.btn-outlined {
+  background-color: #2c3e50;
+  border: none;
+  color: white;
+  border: 1px whitesmoke solid;
+  border-radius: 4px;
+  margin: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.btn-outlined:hover {
+  background-color: white;
+  color: #2c3e50;
+}
+
+.body-title {
+  font-size: 2rem;
+}
+
+.algo-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 80%;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.algo-label {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: calc((100% / 3) - 32px);
+  background-color: white;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.algo-label input {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.btn-begin {
+  background-color: #e67e22;
+  width: fit-content;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-begin:hover {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.4);
+}

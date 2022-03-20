@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/begin.css" />
+  <title>Quiz - Algo Visualizer</title>
+</head>
+
+<body>
+  <header>
+    <div class="header-top">
+      <div class="header-title">Algorithm Visualizer</div>
+      <div class="auth">
+        <button class="btn-outlined" onclick="window.location.href = '/index.html'">
+          Home
+        </button>
+        <button class="btn-outlined hidden" id="login" onclick="window.location.href='/login.html'">Login</button>
+        <button class="btn-outlined hidden" id="logout" onclick="logout()">Logout</button>
+        <div class="avatar hidden" id="avatar">A</div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="body-title">
+      Select Algorithms to begin quiz
+    </div>
+    <div class="algo-container">
+      <label class="algo-label">
+        Bubble Sort
+        <input type="checkbox" id="bubble" value="bubble">
+      </label>
+      <label class="algo-label">
+        Selection Sort
+        <input type="checkbox" id="selection" value="selection">
+      </label>
+      <label class="algo-label">
+        Insertion Sort
+        <input type="checkbox" id="insertion" value="insertion">
+      </label>
+      <label class="algo-label">
+        Merge Sort
+        <input type="checkbox" id="merge" value="merge">
+      </label>
+      <label class="algo-label">
+        Quick Sort
+        <input type="checkbox" id="quick" value="quick">
+      </label>
+      <label class="algo-label">
+        Heap Sort
+        <input type="checkbox" id="heap" value="heap">
+      </label>
+    </div>
+    <button class="btn-begin" onclick="window.location.href='/quiz.html'">Begin Quiz</button>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="./js/firebase.js"></script>
+  <script src="./js/auth.js"></script>
+</body>
+
+</html>
