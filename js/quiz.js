@@ -7,6 +7,10 @@ async function fetchQuiz() {
     window.location.href = '/begin-quiz.html'
   }
   await fillQuizList(selectedAlgos);
+
+  // Shuffle the quiz list:
+  quizList.sort(() => Math.random() > 0.5 ? 1 : -1)
+
 }
 
 async function fillQuizList(selectedAlgos) {
@@ -14,7 +18,10 @@ async function fillQuizList(selectedAlgos) {
     for (const algo of selectedAlgos) {
       const snapshot = await firestore.collection(`questions/sorting/${algo}`).get()
       snapshot.forEach((doc) => {
-        quizList.push(doc.data())
+        quizList.push({
+          category: algo,
+          ...doc.data()
+        })
       });
     }
   } catch (err) {
