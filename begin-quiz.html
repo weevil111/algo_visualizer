@@ -30,36 +30,37 @@
     <div class="algo-container">
       <label class="algo-label">
         Bubble Sort
-        <input type="checkbox" id="bubble" value="bubble">
+        <input type="checkbox" id="bubble_sort" value="bubble">
       </label>
       <label class="algo-label">
         Selection Sort
-        <input type="checkbox" id="selection" value="selection">
+        <input type="checkbox" id="selection_sort" value="selection">
       </label>
       <label class="algo-label">
         Insertion Sort
-        <input type="checkbox" id="insertion" value="insertion">
+        <input type="checkbox" id="insertion_sort" value="insertion">
       </label>
       <label class="algo-label">
         Merge Sort
-        <input type="checkbox" id="merge" value="merge">
+        <input type="checkbox" id="merge_sort" value="merge">
       </label>
       <label class="algo-label">
         Quick Sort
-        <input type="checkbox" id="quick" value="quick">
+        <input type="checkbox" id="quick_sort" value="quick">
       </label>
       <label class="algo-label">
         Heap Sort
-        <input type="checkbox" id="heap" value="heap">
+        <input type="checkbox" id="heap_sort" value="heap">
       </label>
     </div>
-    <button class="btn-begin" onclick="window.location.href='/quiz.html'">Begin Quiz</button>
+    <button class="btn-begin" onclick="beginQuiz()">Begin Quiz</button>
   </main>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="./js/firebase.js"></script>
   <script src="./js/auth.js"></script>
+  <script src="./js/begin_quiz.js"></script>
 </body>
 
 </html>
