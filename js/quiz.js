@@ -2,6 +2,10 @@ const loader = document.querySelector(".loader")
 const quesNumberEl = document.querySelector(".question-no");
 const questionStatementEl = document.querySelector(".quiz-title");
 const answerOptionsArray = Array.from(document.querySelectorAll(".quiz-answer"));
+
+const tooltip = document.querySelector(".tooltiptext")
+const progressbar = document.querySelector(".quiz-progress")
+
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
 const submitBtn = document.querySelector("#submit-btn");
@@ -85,6 +89,14 @@ function prevQuestion() {
     ${option.value}
     `
   })
+}
+
+function updateProgressBar(val) {
+  const value = Math.floor(val) + "%";
+  progressbar.style.width = value;
+  tooltip.style.left = value;
+  tooltip.innerText = value
+
 }
 
 function submit() {
