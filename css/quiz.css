@@ -7,7 +7,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 header {
@@ -46,6 +46,7 @@ main {
   padding: 16px;
   text-align: center;
   background-color: whitesmoke;
+  position: relative;
 }
 
 .btn-outlined {
@@ -214,4 +215,17 @@ main {
 .quiz-progress-container:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.loader {
+  background-color: whitesmoke;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  z-index: 999;
 }

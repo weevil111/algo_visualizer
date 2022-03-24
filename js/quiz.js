@@ -1,3 +1,4 @@
+const loader = document.querySelector(".loader")
 const quesNumberEl = document.querySelector(".question-no");
 const questionStatementEl = document.querySelector(".quiz-title");
 const answerOptionsArray = Array.from(document.querySelectorAll(".quiz-answer"));
@@ -19,7 +20,8 @@ async function fetchQuiz() {
   quizList = quizList.slice(0, TOTAL_QUESTIONS)
 
   // Set the first question:
-  nextQuestion()
+  nextQuestion();
+  loader.classList.add("hidden")
 }
 
 async function fillQuizList(selectedAlgos) {
