@@ -2,6 +2,9 @@ const loader = document.querySelector(".loader")
 const quesNumberEl = document.querySelector(".question-no");
 const questionStatementEl = document.querySelector(".quiz-title");
 const answerOptionsArray = Array.from(document.querySelectorAll(".quiz-answer"));
+const prevBtn = document.querySelector("#prev-btn");
+const nextBtn = document.querySelector("#next-btn");
+const submitBtn = document.querySelector("#submit-btn");
 
 const TOTAL_QUESTIONS = 10;
 let quizList = [];
@@ -42,10 +45,15 @@ async function fillQuizList(selectedAlgos) {
 
 
 function nextQuestion() {
-  if (currentQuestionNumber === TOTAL_QUESTIONS) return;
+  if (currentQuestionNumber === TOTAL_QUESTIONS - 1) {
+    nextBtn.classList.add("hidden");
+    submitBtn.classList.remove("hidden");
+  } else if (currentQuestionNumber === 1) {
+    prevBtn.disabled = false
+  }
 
   currentQuestionNumber += 1;
-  const currentQuestion = quizList[currentQuestionNumber];
+  const currentQuestion = quizList[currentQuestionNumber - 1];
   quesNumberEl.innerText = `Question ${currentQuestionNumber}/${TOTAL_QUESTIONS}`;
   questionStatementEl.innerText = currentQuestion.question;
   answerOptionsArray.forEach((el, index) => {
@@ -57,5 +65,28 @@ function nextQuestion() {
   })
 
 }
+
+function prevQuestion() {
+  if (currentQuestionNumber === 2) {
+    prevBtn.disabled = true;
+  } else if (currentQuestionNumber === TOTAL_QUESTIONS) {
+    nextBtn.classList.remove("hidden");
+    submitBtn.classList.add("hidden")
+  }
+
+  currentQuestionNumber -= 1;
+  const currentQuestion = quizList[currentQuestionNumber - 1];
+  quesNumberEl.innerText = `Question ${currentQuestionNumber}/${TOTAL_QUESTIONS}`;
+  questionStatementEl.innerText = currentQuestion.question;
+  answerOptionsArray.forEach((el, index) => {
+    const option = currentQuestion.options[index];
+    el.innerHTML = `
+    <input type="radio" name="option" id="${option.id}">
+    ${option.value}
+    `
+  })
+}
+
+
 
 fetchQuiz()
