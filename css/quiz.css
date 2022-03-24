@@ -68,21 +68,18 @@ main {
   display: flex;
   height: fit-content;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
 .question-no {
-  color: #e67e22;
-  font-size: 1.2rem;
-}
-
-.topic {
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #2c3e50;
 }
 
-.btn-save {
+.btn-save,
+.btn-back {
   background: #2c3e50;
   color: #ffffff;
   padding: 8px 16px;
@@ -91,20 +88,14 @@ main {
   cursor: pointer;
 }
 
-.btn-save:hover,
-.btn-ques-nav:hover {
-  background: #ffffff;
-  border: 1px solid #2c3e50;
-  color: #2c3e50;
-}
-
 .quiz-card {
   width: 100%;
   max-width: 600px;
   margin: 16px auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 16px;
   user-select: none;
 }
 
@@ -180,13 +171,15 @@ main {
   cursor: pointer;
 }
 
+.btn-save:hover,
+.btn-back:hover,
+.btn-ques-nav:hover {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
 .arrow {
   width: 10px;
   fill: white;
-}
-
-.btn-ques-nav:hover .arrow {
-  fill: #2c3e50;
 }
 
 .quiz-progress-container .tooltiptext {
