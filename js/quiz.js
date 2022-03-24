@@ -1,6 +1,7 @@
 const loader = document.querySelector(".loader")
 const quesNumberEl = document.querySelector(".question-no");
 const questionStatementEl = document.querySelector(".quiz-title");
+const quizBody = document.querySelector(".quiz-body")
 const answerOptionsArray = Array.from(document.querySelectorAll(".quiz-answer"));
 
 const tooltip = document.querySelector(".tooltiptext")
@@ -106,5 +107,10 @@ function submit() {
   }
 }
 
+
+quizBody.addEventListener("input", function (e) {
+  const currentQuestion = quizList[currentQuestionNumber - 1];
+  currentQuestion.selectedAnswer = e.target.id
+})
 
 fetchQuiz()
