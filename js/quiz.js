@@ -87,6 +87,12 @@ function prevQuestion() {
   })
 }
 
+function submit() {
+  if (!firebaseAuth.currentUser) {
+    alert("You will be redirected to login page")
+    window.open("./login.html?autoclose=true")
+  }
+}
 
 
 fetchQuiz()

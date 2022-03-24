@@ -5,12 +5,14 @@ const loginBtn = document.querySelector("#login");
 const logoutBtn = document.querySelector("#logout");
 const avatar = document.querySelector("#avatar");
 
+let operationsRemaining = false;
+
 firebaseAuth.onAuthStateChanged(user => {
   if (user) {
     if (loginBtn) loginBtn.classList.add("hidden");
     if (logoutBtn) logoutBtn.classList.remove("hidden")
     if (avatar) avatar.classList.remove("hidden")
-    if (["/signup.html", "/login.html"].includes(window.location.pathname)) {
+    if (["/signup.html", "/login.html"].includes(window.location.pathname) && !operationsRemaining) {
       window.location.href = "/index.html";
     }
     if (avatar) {
@@ -29,14 +31,19 @@ function login(e) {
   const email = emailInput.value;
   const pass = passInput.value;
 
+  operationsRemaining = true;
   firebaseAuth.signInWithEmailAndPassword(email, pass)
     .then(() => {
+      if (getQueryValue("autoclose") === "true") {
+        window.close();
+      }
       window.location.href = "/index.html"
     })
     .catch(error => {
       console.log(error);
       alert(`Login failed! ${error.code}`)
     })
+    .finally(() => operationsRemaining = false)
 }
 
 function signup(e) {
@@ -48,7 +55,7 @@ function signup(e) {
     alert("Please enter all the details")
   }
 
-
+  operationsRemaining = true;
   firebaseAuth.createUserWithEmailAndPassword(email, password)
     .then(({ user }) => {
       return user.updateProfile({
@@ -56,16 +63,32 @@ function signup(e) {
       })
     })
     .then(() => {
+      if (getQueryValue("autoclose") === "true") {
+        window.close();
+      }
       window.location.href = "/index.html"
     })
     .catch(error => {
       console.log(error);
       alert(error.message)
     })
+    .finally(() => operationsRemaining = false)
 
   return false
 }
 
 function logout() {
   firebaseAuth.signOut();
+}
+
+function getQueryValue(name) {
+  let query = window.location.search.substring(1);
+  let queryStringArrays = query.split("&");
+  for (let query of queryStringArrays) {
+    let pair = query.split("=");
+    if (pair[0] === name) {
+      return pair[1];
+    }
+  }
+  return false
 }
