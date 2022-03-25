@@ -64,7 +64,7 @@ function nextQuestion() {
   answerOptionsArray.forEach((el, index) => {
     const option = currentQuestion.options[index];
     el.innerHTML = `
-    <input type="radio" name="option" id="${option.id}">
+    <input type="radio" name="option" ${option.id == currentQuestion.selectedAnswer ? 'checked' : ''} id="${option.id}">
     ${option.value}
     `
   })
@@ -86,17 +86,22 @@ function prevQuestion() {
   answerOptionsArray.forEach((el, index) => {
     const option = currentQuestion.options[index];
     el.innerHTML = `
-    <input type="radio" name="option" id="${option.id}">
+    <input type="radio" name="option" ${option.id == currentQuestion.selectedAnswer ? 'checked' : ''} id="${option.id}">
     ${option.value}
     `
   })
 }
 
-function updateProgressBar(val) {
-  const value = Math.floor(val) + "%";
-  progressbar.style.width = value;
-  tooltip.style.left = value;
-  tooltip.innerText = value
+function getCorrectlyAnsweredQuestions() {
+  return quizList.filter(question => question.hasOwnProperty("selectedAnswer") && question.selectedAnswer)
+}
+
+function updateProgressBar() {
+  const numberOfAnsweredQuestions = getCorrectlyAnsweredQuestions().length;
+  const progressPercentage = Math.floor(numberOfAnsweredQuestions / TOTAL_QUESTIONS * 100) + "%";
+  progressbar.style.width = progressPercentage;
+  tooltip.style.left = progressPercentage;
+  tooltip.innerText = progressPercentage
 
 }
 
@@ -105,12 +110,17 @@ function submit() {
     alert("You will be redirected to login page")
     window.open("./login.html?autoclose=true")
   }
+
+  const correctlyAnsweredQuestions = getCorrectlyAnsweredQuestions()
+  console.log(correctlyAnsweredQuestions)
 }
 
 
 quizBody.addEventListener("input", function (e) {
   const currentQuestion = quizList[currentQuestionNumber - 1];
   currentQuestion.selectedAnswer = e.target.id
+  updateProgressBar()
 })
 
 fetchQuiz()
+updateProgressBar(); // set it to 0
