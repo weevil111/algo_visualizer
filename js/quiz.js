@@ -7,6 +7,7 @@ const answerOptionsArray = Array.from(document.querySelectorAll(".quiz-answer"))
 const tooltip = document.querySelector(".tooltiptext")
 const progressbar = document.querySelector(".quiz-progress")
 
+const clearBtn = document.querySelector(".btn-clear");
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
 const submitBtn = document.querySelector("#submit-btn");
@@ -122,6 +123,14 @@ quizBody.addEventListener("input", function (e) {
   const currentQuestion = quizList[currentQuestionNumber - 1];
   currentQuestion.selectedAnswer = e.target.id
   updateProgressBar()
+})
+
+clearBtn.addEventListener("click", function (e) {
+  const inputElements = Array.from(quizBody.querySelectorAll("input"));
+  inputElements.forEach(el => el.checked = false);
+  delete quizList[currentQuestionNumber - 1].selectedAnswer
+  updateProgressBar()
+
 })
 
 fetchQuiz()

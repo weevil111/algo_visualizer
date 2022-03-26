@@ -80,13 +80,18 @@ main {
 }
 
 .btn-save,
-.btn-back {
+.btn-back,
+.btn-clear {
   background: #2c3e50;
   color: #ffffff;
   padding: 8px 16px;
   border: 1px solid #ffffff;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.btn-clear {
+  align-self: flex-end;
 }
 
 .quiz-card {
