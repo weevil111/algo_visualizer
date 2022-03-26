@@ -1,12 +1,16 @@
+const review = window.localStorage.getItem("review") === "true";
 const loader = document.querySelector(".loader")
 const quesNumberEl = document.querySelector(".question-no");
 const questionStatementEl = document.querySelector(".quiz-title");
 const quizBody = document.querySelector(".quiz-body")
+const quizSubtitle = document.querySelector(".quiz-subtitle")
+const inputElements = Array.from(quizBody.querySelectorAll("input"));
 const answerOptionsArray = Array.from(document.querySelectorAll(".quiz-answer"));
 
 const tooltip = document.querySelector(".tooltiptext")
 const progressbar = document.querySelector(".quiz-progress")
 
+const saveBtn = document.querySelector(".btn-save");
 const clearBtn = document.querySelector(".btn-clear");
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
@@ -52,8 +56,12 @@ async function fillQuizList(selectedAlgos) {
 
 function nextQuestion() {
   if (currentQuestionNumber === TOTAL_QUESTIONS - 1) {
-    nextBtn.classList.add("hidden");
-    submitBtn.classList.remove("hidden");
+    if (review) {
+      nextBtn.disabled = true
+    } else {
+      nextBtn.classList.add("hidden");
+      submitBtn.classList.remove("hidden");
+    }
   } else if (currentQuestionNumber === 1) {
     prevBtn.disabled = false
   }
@@ -64,12 +72,36 @@ function nextQuestion() {
   questionStatementEl.innerText = currentQuestion.question;
   answerOptionsArray.forEach((el, index) => {
     const option = currentQuestion.options[index];
+    if (review) {
+      if (option.id == currentQuestion.answer) {
+
+        el.classList.add("bg-green");
+        el.classList.remove("bg-red");
+      } else if (option.id == currentQuestion.selectedAnswer) {
+        el.classList.add("bg-red");
+        el.classList.remove("bg-green")
+      } else {
+        el.classList.remove("bg-red");
+        el.classList.remove("bg-green")
+      }
+      el.classList.add('option-disabled')
+    }
     el.innerHTML = `
-    <input type="radio" name="option" ${option.id == currentQuestion.selectedAnswer ? 'checked' : ''} id="${option.id}">
+    <input type="radio" name="option" 
+    ${option.id == currentQuestion.selectedAnswer ? 'checked' : ''} 
+    id="${option.id}"
+    ${review ? 'disabled' : ''}
+    >
     ${option.value}
     `
   })
-
+  if (currentQuestion.selectedAnswer == currentQuestion.answer) {
+    quizSubtitle.innerText = "Hurray! You answered it correctly."
+  } else if (!currentQuestion.selectedAnswer) {
+    quizSubtitle.innerText = "Oops! You forgot to answer this question."
+  } else {
+    quizSubtitle.innerText = "Ouch! The selected answer is incorrect."
+  }
 }
 
 function prevQuestion() {
@@ -77,6 +109,7 @@ function prevQuestion() {
     prevBtn.disabled = true;
   } else if (currentQuestionNumber === TOTAL_QUESTIONS) {
     nextBtn.classList.remove("hidden");
+    nextBtn.disabled = false;
     submitBtn.classList.add("hidden")
   }
 
@@ -86,11 +119,36 @@ function prevQuestion() {
   questionStatementEl.innerText = currentQuestion.question;
   answerOptionsArray.forEach((el, index) => {
     const option = currentQuestion.options[index];
+    if (review) {
+      if (option.id == currentQuestion.answer) {
+
+        el.classList.add("bg-green");
+        el.classList.remove("bg-red");
+      } else if (option.id == currentQuestion.selectedAnswer) {
+        el.classList.add("bg-red");
+        el.classList.remove("bg-green")
+      } else {
+        el.classList.remove("bg-red");
+        el.classList.remove("bg-green")
+      }
+      el.classList.add('option-disabled')
+    }
     el.innerHTML = `
-    <input type="radio" name="option" ${option.id == currentQuestion.selectedAnswer ? 'checked' : ''} id="${option.id}">
+    <input type="radio" name="option" 
+    ${option.id == currentQuestion.selectedAnswer ? 'checked' : ''} 
+    id="${option.id}"
+    ${review ? 'disabled' : ''}
+    >
     ${option.value}
     `
   })
+  if (currentQuestion.selectedAnswer == currentQuestion.answer) {
+    quizSubtitle.innerText = "Hurray! You answered it correctly."
+  } else if (!currentQuestion.selectedAnswer) {
+    quizSubtitle.innerText = "Oops! You forgot to answer this question."
+  } else {
+    quizSubtitle.innerText = "Ouch! The selected answer is incorrect."
+  }
 }
 
 function getCorrectlyAnsweredQuestions() {
@@ -126,12 +184,24 @@ quizBody.addEventListener("input", function (e) {
 })
 
 clearBtn.addEventListener("click", function (e) {
-  const inputElements = Array.from(quizBody.querySelectorAll("input"));
   inputElements.forEach(el => el.checked = false);
   delete quizList[currentQuestionNumber - 1].selectedAnswer
   updateProgressBar()
 
 })
 
-fetchQuiz()
-updateProgressBar(); // set it to 0
+function showReview() {
+  quizList = JSON.parse(window.localStorage.getItem("quizResponse"))
+  nextQuestion()
+
+  loader.classList.add("hidden")
+}
+
+if (review) {
+  saveBtn.style.visibility = "hidden";
+  clearBtn.style.visibility = "hidden";
+  showReview()
+} else {
+  fetchQuiz()
+  updateProgressBar(); // set it to 0
+}

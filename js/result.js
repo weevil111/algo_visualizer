@@ -1,4 +1,5 @@
 const scoreEl = document.querySelector(".score")
+const reviewBtn = document.querySelector(".btn-review")
 let quizResponse = [];
 let quizMeta = {}
 
@@ -130,6 +131,11 @@ function createQuestionsPieChart() {
     }
   });
 }
+
+reviewBtn.addEventListener("click", function () {
+  window.localStorage.setItem("review", "true")
+  window.location.href = "/quiz.html"
+})
 
 getQuizResponse()
 computeQuizMeta()
