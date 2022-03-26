@@ -24,16 +24,23 @@
     </div>
   </header>
   <main>
-    <div class="score-container">
+    <div class="quiz-info">
+      <button class="btn-back" onclick="window.history.go(-1)">Back</button>
       <div class="score">
-        <b>Score: </b> 4/10
+        <b>Score: </b> 2/10
       </div>
-      <div class="score-chart-container">
-        <canvas id="score-chart"></canvas>
-      </div>
+      <button class="btn-review">Review</button>
     </div>
-    <div class="questions-chart-container">
-      <canvas id="questions-chart"></canvas>
+    <div class="graphs-container">
+
+      <div class="score-container">
+        <div class="score-chart-container">
+          <canvas id="score-chart"></canvas>
+        </div>
+      </div>
+      <div class="questions-chart-container">
+        <canvas id="questions-chart"></canvas>
+      </div>
     </div>
   </main>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
