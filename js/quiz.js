@@ -112,7 +112,8 @@ function submit() {
   }
 
   const correctlyAnsweredQuestions = getCorrectlyAnsweredQuestions()
-  console.log(correctlyAnsweredQuestions)
+  window.localStorage.setItem("quizResponse", JSON.stringify(quizList))
+  window.location.href = "/result.html"
 }
 
 
