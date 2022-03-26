@@ -78,7 +78,6 @@ function createScoreBarChart() {
     data: {
       labels: quizMeta.algoNames,
       datasets: [{
-        label: "Percentage",
         data: quizMeta.algoPercentages,
         backgroundColor:
           'rgb(230, 126, 34,1)',
@@ -98,6 +97,11 @@ function createScoreBarChart() {
         title: {
           display: true,
           text: 'Topic wise percentage'
+        },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => `${ctx.formattedValue}% correct`
+          }
         }
       }
     },
@@ -108,14 +112,13 @@ function createQuestionsPieChart() {
   const ctx = document.getElementById('questions-chart');
   const labels = ['Correct', 'Wrong']
   if (quizMeta.totalUnanswered > 0) {
-    labels.push(quizMeta.totalUnanswered)
+    labels.push('Unanswered')
   }
   const myChart = new Chart(ctx, {
     type: 'pie',
     data: {
       labels,
       datasets: [{
-        label: 'My First Dataset',
         data: [quizMeta.totalCorrect, quizMeta.totalWrong, quizMeta.totalUnanswered],
         backgroundColor: [
           'rgb(46, 204, 113)',
