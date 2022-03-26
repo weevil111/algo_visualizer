@@ -22,6 +22,7 @@ function computeQuizMeta() {
   quizMeta = {
     totalCorrect: 0,
     totalWrong: 0,
+    totalUnanswered: 0,
     totalQuestionsCount: 0,
     algoNames: [],
     algoPercentages: []
@@ -36,6 +37,7 @@ function computeQuizMeta() {
       quizMeta[algoName] = {
         correctCount: 0,
         wrongCount: 0,
+        unansweredCount: 0,
         totalCount: 0
       }
 
@@ -45,6 +47,10 @@ function computeQuizMeta() {
       quizMeta[algoName].correctCount += 1
       quizMeta.totalCorrect += 1
     } else {
+      if (!response.selectedAnswer) {
+        quizMeta.totalUnanswered += 1
+        quizMeta[algoName].unansweredCount += 1
+      }
       quizMeta[algoName].wrongCount += 1
     }
     quizMeta[algoName].totalCount += 1
@@ -64,7 +70,8 @@ function computeQuizMeta() {
 }
 
 function createScoreBarChart() {
-
+  scoreEl.innerHTML = `
+  <b>Score: </b> ${quizMeta.totalCorrect}/${quizMeta.totalQuestionsCount}`;
   const ctx = document.getElementById('score-chart');
   const myChart = new Chart(ctx, {
     type: 'bar',
@@ -97,6 +104,31 @@ function createScoreBarChart() {
   });
 }
 
+function createQuestionsPieChart() {
+  const ctx = document.getElementById('questions-chart');
+  const labels = ['Correct', 'Wrong']
+  if (quizMeta.totalUnanswered > 0) {
+    labels.push(quizMeta.totalUnanswered)
+  }
+  const myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels,
+      datasets: [{
+        label: 'My First Dataset',
+        data: [quizMeta.totalCorrect, quizMeta.totalWrong, quizMeta.totalUnanswered],
+        backgroundColor: [
+          'rgb(46, 204, 113)',
+          'rgb(231, 76, 60)',
+          'rgb(189, 195, 199)'
+        ],
+        hoverOffset: 4
+      }]
+    }
+  });
+}
+
 getQuizResponse()
 computeQuizMeta()
 createScoreBarChart()
+createQuestionsPieChart()
