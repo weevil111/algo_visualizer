@@ -151,17 +151,31 @@ function prevQuestion() {
   }
 }
 
-function getCorrectlyAnsweredQuestions() {
+function getAttemptedQuestions() {
   return quizList.filter(question => question.hasOwnProperty("selectedAnswer") && question.selectedAnswer)
 }
 
-function updateProgressBar() {
-  const numberOfAnsweredQuestions = getCorrectlyAnsweredQuestions().length;
-  const progressPercentage = Math.floor(numberOfAnsweredQuestions / TOTAL_QUESTIONS * 100) + "%";
-  progressbar.style.width = progressPercentage;
-  tooltip.style.left = progressPercentage;
-  tooltip.innerText = progressPercentage
+function getScore() {
+  const attemptedQuestions = getAttemptedQuestions()
+  const correctlyAnsweredQuestions = attemptedQuestions.filter(question => question.answer == question.selectedAnswer)
+  const score = correctlyAnsweredQuestions.length / quizList.length * 100;
+  return score
+}
 
+function updateProgressBar() {
+  let percentageValue = 0;
+  if (review) {
+    const score = "Score: " + Math.round(getScore()) + "%"
+    percentageValue = score;
+    progressbar.style.backgroundColor = "#27ae60";
+    progressbar.parentElement.style.backgroundColor = "#d63031";
+  } else {
+    const numberOfAttemptedQuestions = getAttemptedQuestions().length;
+    percentageValue = Math.floor(numberOfAttemptedQuestions / TOTAL_QUESTIONS * 100) + "%";
+  }
+  progressbar.style.width = percentageValue;
+  tooltip.style.left = percentageValue;
+  tooltip.innerText = percentageValue
 }
 
 function submit() {
@@ -171,7 +185,6 @@ function submit() {
     return
   }
 
-  const correctlyAnsweredQuestions = getCorrectlyAnsweredQuestions()
   window.localStorage.setItem("quizResponse", JSON.stringify(quizList))
   window.location.href = "/result.html"
 }
@@ -192,8 +205,8 @@ clearBtn.addEventListener("click", function (e) {
 
 function showReview() {
   quizList = JSON.parse(window.localStorage.getItem("quizResponse"))
+  updateProgressBar()
   nextQuestion()
-
   loader.classList.add("hidden")
 }
 
