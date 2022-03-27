@@ -178,13 +178,38 @@ function updateProgressBar() {
   tooltip.innerText = percentageValue
 }
 
-function submit() {
+async function saveProgress() {
+  try {
+    saveBtn.disabled = true;
+    submitBtn.disabled = true;
+    const doc = await firestore.doc(`progress/${firebaseAuth.currentUser.uid}`).get()
+    const progress = doc.data() || {};
+    for (question of quizList) {
+      const { id, category, answer, selectedAnswer } = question;
+      if (!selectedAnswer || selectedAnswer != answer) continue;
+
+      if (!progress.hasOwnProperty(category)) {
+        progress[category] = [id];
+      } else if (!progress[category].includes(id)) {
+        progress[category].push(id)
+      }
+    }
+    await firestore.doc(`progress/${firebaseAuth.currentUser.uid}`).set(progress)
+    console.log(progress)
+  } catch (err) {
+    console.log("An error occured while saving progres ", err);
+  } finally {
+    saveBtn.disabled = false;
+    submitBtn.disabled = false;
+  }
+}
+async function submit() {
   if (!firebaseAuth.currentUser) {
     alert("You will be redirected to login page")
     window.open("./login.html?autoclose=true")
     return
   }
-
+  await saveProgress()
   window.localStorage.setItem("quizResponse", JSON.stringify(quizList))
   window.location.href = "/result.html"
 }
