@@ -165,8 +165,9 @@ function getScore() {
 function updateProgressBar() {
   let percentageValue = 0;
   if (review) {
-    const score = "Score: " + Math.round(getScore()) + "%"
+    const score = Math.round(getScore()) + "%"
     percentageValue = score;
+    progressbar.parentElement.style.border = "none"
     progressbar.style.backgroundColor = "#27ae60";
     progressbar.parentElement.style.backgroundColor = "#d63031";
   } else {
@@ -175,7 +176,7 @@ function updateProgressBar() {
   }
   progressbar.style.width = percentageValue;
   tooltip.style.left = percentageValue;
-  tooltip.innerText = percentageValue
+  tooltip.innerText = `${review ? 'Score: ' : ''}${percentageValue}`
 }
 
 async function saveProgress() {
