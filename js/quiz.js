@@ -195,7 +195,6 @@ async function saveProgress() {
       }
     }
     await firestore.doc(`progress/${firebaseAuth.currentUser.uid}`).set(progress)
-    console.log(progress)
   } catch (err) {
     console.log("An error occured while saving progres ", err);
   } finally {
