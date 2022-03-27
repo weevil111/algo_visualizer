@@ -213,6 +213,7 @@ function showReview() {
 if (review) {
   saveBtn.style.visibility = "hidden";
   clearBtn.style.visibility = "hidden";
+  document.querySelector("title").innerText = "Quiz Review - Algo Visualizer"
   showReview()
 } else {
   fetchQuiz()

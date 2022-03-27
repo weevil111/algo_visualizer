@@ -11,5 +11,7 @@ function beginQuiz() {
     return acc
   }, [])
   localStorage.setItem("selectedAlgos", JSON.stringify(selectedAlgos));
+  localStorage.removeItem("review")
+  localStorage.removeItem("quizResponse")
   window.location.href = '/quiz.html'
 }
