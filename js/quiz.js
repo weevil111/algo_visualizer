@@ -4,7 +4,6 @@ const quesNumberEl = document.querySelector(".question-no");
 const questionStatementEl = document.querySelector(".quiz-title");
 const quizBody = document.querySelector(".quiz-body")
 const quizSubtitle = document.querySelector(".quiz-subtitle")
-const inputElements = Array.from(quizBody.querySelectorAll("input"));
 const answerOptionsArray = Array.from(document.querySelectorAll(".quiz-answer"));
 
 const tooltip = document.querySelector(".tooltiptext")
@@ -95,12 +94,14 @@ function nextQuestion() {
     ${option.value}
     `
   })
-  if (currentQuestion.selectedAnswer == currentQuestion.answer) {
-    quizSubtitle.innerText = "Hurray! You answered it correctly."
-  } else if (!currentQuestion.selectedAnswer) {
-    quizSubtitle.innerText = "Oops! You forgot to answer this question."
-  } else {
-    quizSubtitle.innerText = "Ouch! The selected answer is incorrect."
+  if (review) {
+    if (currentQuestion.selectedAnswer == currentQuestion.answer) {
+      quizSubtitle.innerText = "Hurray! You answered it correctly."
+    } else if (!currentQuestion.selectedAnswer) {
+      quizSubtitle.innerText = "Oops! You forgot to answer this question."
+    } else {
+      quizSubtitle.innerText = "Ouch! The selected answer is incorrect."
+    }
   }
 }
 
@@ -142,12 +143,14 @@ function prevQuestion() {
     ${option.value}
     `
   })
-  if (currentQuestion.selectedAnswer == currentQuestion.answer) {
-    quizSubtitle.innerText = "Hurray! You answered it correctly."
-  } else if (!currentQuestion.selectedAnswer) {
-    quizSubtitle.innerText = "Oops! You forgot to answer this question."
-  } else {
-    quizSubtitle.innerText = "Ouch! The selected answer is incorrect."
+  if (review) {
+    if (currentQuestion.selectedAnswer == currentQuestion.answer) {
+      quizSubtitle.innerText = "Hurray! You answered it correctly."
+    } else if (!currentQuestion.selectedAnswer) {
+      quizSubtitle.innerText = "Oops! You forgot to answer this question."
+    } else {
+      quizSubtitle.innerText = "Ouch! The selected answer is incorrect."
+    }
   }
 }
 
@@ -222,6 +225,7 @@ quizBody.addEventListener("input", function (e) {
 })
 
 clearBtn.addEventListener("click", function (e) {
+  const inputElements = Array.from(quizBody.querySelectorAll("input"));
   inputElements.forEach(el => el.checked = false);
   delete quizList[currentQuestionNumber - 1].selectedAnswer
   updateProgressBar()
