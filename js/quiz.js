@@ -183,6 +183,11 @@ function updateProgressBar() {
 }
 
 async function saveProgress() {
+  if (!firebaseAuth.currentUser) {
+    alert("You will be redirected to login page")
+    window.open("./login.html?autoclose=true")
+    return
+  }
   try {
     saveBtn.disabled = true;
     submitBtn.disabled = true;
@@ -207,11 +212,6 @@ async function saveProgress() {
   }
 }
 async function submit() {
-  if (!firebaseAuth.currentUser) {
-    alert("You will be redirected to login page")
-    window.open("./login.html?autoclose=true")
-    return
-  }
   await saveProgress()
   window.localStorage.setItem("quizResponse", JSON.stringify(quizList))
   window.location.href = "/result.html"
