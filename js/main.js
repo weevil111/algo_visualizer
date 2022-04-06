@@ -2,12 +2,12 @@ const margin_size = 0.1
 
 var cont = document.getElementById("array_container")
 var inp_as = document.getElementById("a_size")
-var inp_gen = document.getElementById("a_generate")
+var btn_gen = document.getElementById("a_generate")
 var inp_reset = document.getElementById("a_reset")
 var inp_aspeed = document.getElementById("a_speed")
 var butts_algos = document.querySelectorAll(".algos button");
 
-inp_gen.addEventListener("click", generate_array)
+btn_gen.addEventListener("click", generate_array)
 inp_as.addEventListener("input", update_array_size)
 
 var div_sizes = []
@@ -15,7 +15,7 @@ var divs = []
 var array_size = Number(inp_as.value)
 var isSorting = false
 
-function generate_array() {
+function generate_array(e) {
   if (isSorting) {
     enable_buttons(true);
     clearTimeoutArray.forEach(el => clearTimeout(el)) // clear further updates
@@ -54,7 +54,7 @@ function runalgo() {
   isSorting = true
 
   this.classList.add("algo_selected");
-  switch (this.innerHTML) {
+  switch (this.innerText) {
     case "Bubble":
       Bubble();
       break;
@@ -80,8 +80,8 @@ function disable_buttons() {
   for (var i = 0; i < butts_algos.length; i++) {
     butts_algos[i].classList = [];
     butts_algos[i].disabled = true;
-    inp_as.disabled = true;
-    inp_gen.innerText = "Reset";
-    inp_aspeed.disabled = true;
   }
+  inp_as.disabled = true;
+  btn_gen.innerText = "Reset";
+  inp_aspeed.disabled = true;
 }

@@ -29,6 +29,7 @@ async function fetchQuiz() {
 
   // Shuffle the quiz list:
   quizList.sort(() => Math.random() > 0.5 ? 1 : -1)
+  // Select first 10 questions:
   quizList = quizList.slice(0, TOTAL_QUESTIONS)
 
   // Set the first question:
@@ -184,7 +185,7 @@ function updateProgressBar() {
 
 async function saveProgress() {
   if (!firebaseAuth.currentUser) {
-    alert("You will be redirected to login page")
+    alert("You have to login before saving progress")
     window.open("./login.html?autoclose=true")
     return
   }

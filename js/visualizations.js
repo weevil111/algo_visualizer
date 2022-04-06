@@ -47,7 +47,7 @@ function enable_buttons(now = false) {
             butts_algos[i].disabled = false;
         }
         inp_as.disabled = false;
-        inp_gen.innerText = "Generate New Array";
+        btn_gen.innerText = "Generate New Array";
         inp_aspeed.disabled = false;
         isSorting = false;
     }

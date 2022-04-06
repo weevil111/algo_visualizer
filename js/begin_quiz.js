@@ -39,11 +39,14 @@ function beginQuiz() {
   window.location.href = '/quiz.html'
 }
 
-let checkTime = 4;
+let checkTime = 10;
 const intervalRef = setInterval(() => {
   if (checkTime && firebaseAuth.currentUser) {
     setProgress();
     clearInterval(intervalRef)
   }
   checkTime -= 1;
+  if (!checkTime) {
+    clearInterval(intervalRef)
+  }
 }, 2000)

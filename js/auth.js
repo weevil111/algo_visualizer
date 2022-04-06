@@ -79,6 +79,7 @@ function signup(e) {
 
 function logout() {
   firebaseAuth.signOut();
+  window.location.reload();
 }
 
 function getQueryValue(name) {
