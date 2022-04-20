@@ -5,6 +5,8 @@ var inp_as = document.getElementById("a_size")
 var btn_gen = document.getElementById("a_generate")
 var inp_reset = document.getElementById("a_reset")
 var inp_aspeed = document.getElementById("a_speed")
+var algo_buttons_container = document.querySelector(".algos")
+var psuedo_code_container = document.querySelector(".pseudo_code")
 var butts_algos = document.querySelectorAll(".algos button");
 
 btn_gen.addEventListener("click", generate_array)
@@ -51,6 +53,8 @@ for (let i = 0; i < butts_algos.length; i++) {
 
 function runalgo() {
   disable_buttons();
+  algo_buttons_container.classList.add("hidden")
+  psuedo_code_container.classList.remove("hidden")
   isSorting = true
 
   this.classList.add("algo_selected");

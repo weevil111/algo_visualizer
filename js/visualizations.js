@@ -49,6 +49,8 @@ function enable_buttons(now = false) {
         inp_as.disabled = false;
         btn_gen.innerText = "Generate New Array";
         inp_aspeed.disabled = false;
+        algo_buttons_container.classList.remove("hidden")
+        psuedo_code_container.classList.add("hidden")
         isSorting = false;
     }
     if (now) {
