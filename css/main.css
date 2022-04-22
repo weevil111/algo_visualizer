@@ -96,8 +96,7 @@ main {
   line-height: 1.5rem;
   font-size: 1.1rem;
 }
-.higlighted_line{
-  background-color: #c0392b;
+.highlighted_line{
   color: white;
   font-size: 1.2rem;
   border-radius: 8px;

@@ -73,3 +73,18 @@ function addPsuedoCode(algoName) {
     psuedo_code_container.appendChild(div)
   })
 }
+
+function highlightLine(payload) {
+  const lineNumbers = Object.keys(payload).map(Number)
+  console.log(lineNumbers)
+  const allLines = document.querySelectorAll(".line")
+  allLines.forEach((line, index) => {
+    if (lineNumbers.includes(index + 1)) {
+      line.classList.add("highlighted_line")
+      line.style.backgroundColor = payload[index + 1]
+    } else {
+      line.classList.remove("highlighted_line")
+      line.style.backgroundColor = "unset"
+    }
+  })
+}
