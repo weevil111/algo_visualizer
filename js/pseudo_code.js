@@ -9,30 +9,30 @@ const pseudo_code = {
     "while swapped"
   ],
   selection_sort: [
-    "repeat (numOfElements - 1) times",
-    "   set the first unsorted element as the minimum",
+    "Repeat (numOfElements - 1) times",
+    "   Set the first unsorted element as the minimum",
     "   for each of the unsorted elements",
     "       if element < currentMinimum",
     "           set element as new minimum",
-    "   swap minimum with first unsorted position"
+    "   Swap minimum with first unsorted position"
   ],
   insertion_sort: [
-    "mark first element as sorted",
+    "Mark first element as sorted",
     "for each unsorted element X",
-    "   'extract' the element X",
+    "   Extract the element X",
     "   for j = lastSortedIndex down to 0",
     "       if current element j > X",
     "           move sorted element to the right by 1",
     "       break loop and insert X here"
   ],
   merge_sort: [
-    "split each element into partitions of size 1",
-    "recursively merge adjacent partitions",
+    "Split each element into partitions of size 1",
+    "Recursively merge adjacent partitions",
     "   for i = leftPartIdx to rightPartIdx",
     "       if leftPartHeadValue <= rightPartHeadValue",
     "           copy leftPartHeadValue",
     "       else: copy rightPartHeadValue; Increase InvIdx",
-    "copy elements back to original array"
+    "Copy elements back to original array"
   ],
   quick_sort: [
     "for each (unsorted) partition",
@@ -44,29 +44,32 @@ const pseudo_code = {
     "   swap(pivot, storeIndex-1)"
   ],
   heap_sort: [
-    "MaxHeapify(A, i)",
-    "   l = left(i)",
-    "   r = right(i)",
-    "   if l <= heap-size[A] and A[l] > A[i]",
-    "       then largest = l",
-    "   else largest = i",
-    "   if r <= heap-size[A] and A[r] > A[largest]",
-    "        then largest = r",
-    "   if largest != i",
-    "       then swap A[i] with A[largest]",
-    "       MaxHeapify(A, largest)",
-    "end func",
-    "BuildMaxHeap(A)",
-    "   heap-size[A] = length[A]",
-    "   for i = |length[A]/2| downto 1",
-    "        do MaxHeapify(A, i)",
-    "end func",
     "HeapSort(A)",
     "    BuildMaxHeap(A)",
     "    for i = length[A] downto 2",
     "       do swap A[1] with A[i]",
     "           heap-size[A] = heap-size[A] – 1",
     "           MaxHeapify(A, 1)",
-    "end func"
+    "end func",
+    "BuildMaxHeap(A)",
+    "   heap-size[A] = length[A]",
+    "   for i = |length[A]/2| downto 1",
+    "        do MaxHeapify(A, i)",
+    "end func",
   ]
+}
+
+function addPsuedoCode(algoName) {
+  const currentPseudoCode = pseudo_code[algoName]
+  psuedo_code_container.innerHTML = ""
+  currentPseudoCode.forEach((line, index) => {
+    // psuedo_code_container
+    const div = document.createElement("div")
+    div.classList.add("line")
+    div.id = `line${index + 1}`
+    div.innerHTML = `
+      <span class="line_number">${index + 1}.</span>
+      ${line.replaceAll(" ", "&nbsp;")}`
+    psuedo_code_container.appendChild(div)
+  })
 }

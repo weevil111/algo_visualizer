@@ -60,21 +60,27 @@ function runalgo() {
   this.classList.add("algo_selected");
   switch (this.innerText) {
     case "Bubble":
+      addPsuedoCode("bubble_sort")
       Bubble();
       break;
     case "Selection":
+      addPsuedoCode("selection_sort")
       Selection_sort();
       break;
     case "Insertion":
+      addPsuedoCode("insertion_sort")
       Insertion();
       break;
     case "Merge":
+      addPsuedoCode("merge_sort")
       Merge();
       break;
     case "Quick":
+      addPsuedoCode("quick_sort")
       Quick();
       break;
     case "Heap":
+      addPsuedoCode("heap_sort")
       Heap();
       break;
   }
