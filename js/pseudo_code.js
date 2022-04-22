@@ -76,7 +76,6 @@ function addPsuedoCode(algoName) {
 
 function highlightLine(payload) {
   const lineNumbers = Object.keys(payload).map(Number)
-  console.log(lineNumbers)
   const allLines = document.querySelectorAll(".line")
   allLines.forEach((line, index) => {
     if (lineNumbers.includes(index + 1)) {

@@ -32,10 +32,11 @@ function changeSpeed() {
 }
 
 
-function div_update(cont, height, color) {
+function div_update(cont, height, color, highlightPayload) {
     const clearFunction = setTimeout(function () {
         cont.innerText = height
         cont.style = " margin:0% " + margin_size + "%; width:" + (100 / array_size - (2 * margin_size)) + "%; height:" + height + "%; background-color:" + color + ";";
+        if (highlightPayload) highlightLine(highlightPayload)
     }, c_delay += delay_time);
     clearTimeoutArray.push(clearFunction)
 }
