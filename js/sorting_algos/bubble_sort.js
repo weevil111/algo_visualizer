@@ -3,7 +3,7 @@ function Bubble() {
     highlightLine({ 1: "#8e44ad", 2: "#8e44ad" })
     for (var i = 0; i < array_size - 1; i++) {
         for (var j = 0; j < array_size - i - 1; j++) {
-            div_update(divs[j], div_sizes[j], "#8e44ad", { 3: "#8e44ad" });//Color update
+            div_update(divs[j], div_sizes[j], "#8e44ad", { 3: "#8e44ad", 4: "red" });//Color update
 
             if (div_sizes[j] > div_sizes[j + 1]) {
                 div_update(divs[j], div_sizes[j], "red", { 4: "red" });//Color update
