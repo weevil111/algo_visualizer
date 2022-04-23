@@ -13,7 +13,7 @@ const pseudo_code = {
     "   Set the first unsorted element as the minimum",
     "   for each of the unsorted elements",
     "       if element < currentMinimum",
-    "           set element as new minimum",
+    "           Set element as new minimum",
     "   Swap minimum with first unsorted position"
   ],
   insertion_sort: [
