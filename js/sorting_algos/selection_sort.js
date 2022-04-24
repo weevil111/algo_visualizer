@@ -14,7 +14,7 @@ function Selection_sort() {
                     div_update(divs[index_min], div_sizes[index_min], "#e67e22");//Color update
                 }
                 index_min = j;
-                div_update(divs[index_min], div_sizes[index_min], "red", { 3: "#e67e225", 5: "red" });//Color update
+                div_update(divs[index_min], div_sizes[index_min], "red", { 3: "#e67e22", 5: "red" });//Color update
             }
             else {
                 div_update(divs[j], div_sizes[j], "#e67e22");//Color update
