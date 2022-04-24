@@ -1,6 +1,6 @@
 function Heap() {
     c_delay = 0;
-
+    highlightLine({ 1: "#e67e22", 2: "red" })
     heap_sort();
 
     enable_buttons();
@@ -54,19 +54,23 @@ function max_heapify(n, i) {
 }
 
 function heap_sort() {
+    div_update(divs[0], div_sizes[0], "#e67e22", { 9: "red" })
     for (var i = Math.floor(array_size / 2) - 1; i >= 0; i--) {
+        div_update(divs[i], div_sizes[i], "#e67e22", { 10: "#e67e22", 11: "red" })
         max_heapify(array_size, i);
+        div_update(divs[i], div_sizes[i], "#e67e22", { 10: "#e67e22" })
     }
+    div_update(divs[0], div_sizes[0], "#e67e22", { 3: "red" })
 
     for (var i = array_size - 1; i > 0; i--) {
         swap(0, i);
-        div_update(divs[i], div_sizes[i], "green");//Color update
+        div_update(divs[i], div_sizes[i], "green", { 3: "#e67e22", 4: "red" });//Color update
         div_update(divs[i], div_sizes[i], "#8e44ad");//Color update
 
         max_heapify(i, 0);
 
-        div_update(divs[i], div_sizes[i], "#e67e22");//Color update
-        div_update(divs[i], div_sizes[i], "green");//Color update
+        div_update(divs[i], div_sizes[i], "#e67e22", { 3: "#e67e22", 5: "red", 6: "red" });//Color update
+        div_update(divs[i], div_sizes[i], "green", { 3: "#e67e22", 6: "green" });//Color update
     }
-    div_update(divs[i], div_sizes[i], "green");//Color update
+    div_update(divs[i], div_sizes[i], "green", { 7: "green" });//Color update
 }
