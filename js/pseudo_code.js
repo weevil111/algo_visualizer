@@ -1,11 +1,9 @@
 const pseudo_code = {
   bubble_sort: [
     "do",
-    "   swapped = false",
     "   for i = 1 to indexOfLastUnsortedElement-1",
     "       if leftElement > rightElement",
     "           swap(leftElement, rightElement)",
-    "           swapped = true; ++swapCounter",
     "while swapped"
   ],
   selection_sort: [
